@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+  xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 http://concrete5.github.io/doctrine-xml/doctrine-xml-0.5.xsd">
+    
+  <table name="ListcodeFormTable">
+    <field name="bID" type="integer">
+      <unsigned/>
+      <key/>
+    </field>
+    <field name="formname" type="string" size="255">
+      <unsigned/>
+      <default value="0"/>
+      <notnull/>
+    </field>
+    <field name="rtmail" type="boolean">
+      <default value="-1"/>
+      <notnull/>
+    </field>
+  </table>
+  
+  <table name="ListcodeFormAnswerInd">
+    <field name="asID" type="integer">
+      <unsigned/>
+      <autoincrement/>
+      <key/>
+    </field>
+    <field name="bID" type="integer">
+      <notnull/>
+    </field>
+    <field name="created" type="timestamp">
+      <deftimestamp/>
+    </field>
+  </table>
+
+  <table name="ListcodeFormAnswerTable">
+    <field name="acID" type="integer">
+      <unsigned/>
+      <autoincrement/>
+      <key/>
+    </field>
+    <field name="asID" type="integer">
+      <unsigned/>
+      <notnull/>
+    </field>
+    <field name="colname" type="string" size="255"/>
+    <field name="label" type="string" size="255"/>
+    <field name="answer" type="string" size="255"/>
+    <field name="answerLong" type="text" size="65535"/>
+  </table>
+
+</schema>
