@@ -118,22 +118,26 @@ class Controller extends BlockController
         }
             
         // Send the mail
-        $mail->setSubject('問い合わせフォーム');
-        $mail->setBody($body);
         $mail->to($formFormEmailAddress, 'admin');
         $mail->from($input['email'], $input['name']);
         $mail->replyto($input['email'], $input['name']);
+        $mail->addParameter('formList', $formList);
+        $mail->addParameter('formname',$this->formname);
+        $mail->load('list_form_submission_admin');
+        $mail->setSubject(t('%sフォーム:受付確認',$this->formname));
         @$mail->sendMail();
         
         //Send Retrun mail
         if($this->rtmail){
         $mail = null;
         $mail = Core::make('helper/mail');
-        $mail->setSubject('問い合わせフォーム:受付確認');
-        $mail->setBody($body);
         $mail->to($input['email'], $input['name']);
         $mail->from($formFormEmailAddress, 'admin');
         $mail->replyto($formFormEmailAddress, 'admin');
+        $mail->addParameter('formList', $formList);
+        $mail->addParameter('formname',$this->formname);
+        $mail->load('list_form_submission');
+        $mail->setSubject(t('%sフォーム',$this->formname));
         @$mail->sendMail();
         }
         
