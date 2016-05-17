@@ -77,12 +77,12 @@ class Controller extends BlockController
      */
     public function getBlockTypeDescription()
     {
-        return "基本のフォームを受け付けるブロック";
+        return "配列で作成したフォームを確認画面付きで送信できるブロック";
     }
 
     public function getBlockTypeName()
     {
-        return t("シンプルフォームブロック");
+        return "リストフォームブロック";
     }
     public function view(){ 
       $this->set('rtmail',$this->rtmail);
