@@ -7,7 +7,7 @@ $token = Loader::helper('validation/token');
 $crsftag = $token->generate($bid.'ask');
 ?>
 <?php if ($section == 'edit') { ?>
-<h2><?php echo $formname; ?></h2>
+<h2><?php echo h($formname); ?></h2>
 <form method="post" action="<?php echo $view->action('confirm')?>">
 <?php foreach($formList as $flist){ ?>
   <div class="form-group <?php echo $flist['name'] ?>">
@@ -46,16 +46,16 @@ $crsftag = $token->generate($bid.'ask');
 </form>
 <?php } ?>
 <?php if ($section == 'confirm'){ ?>
-<h2><?php echo $formname; ?>：確認</h2>
+<h2><?php echo h($formname); ?>：確認</h2>
 <table class="table">
   <?php foreach($formList as $flist){ ?>
   <tr>
-    <td><?php echo $flist['label']; ?></td>
+    <td><?php echo h($flist['label']); ?></td>
     <td><?php
       if(is_array($input[$flist['name']])){
-        echo implode(',',$input[$flist['name']]);
+        echo h(implode(',',$input[$flist['name']]));
       }else{
-        echo $input[$flist['name']];
+        echo h($input[$flist['name']]);
       }
     ?></td>
   </tr>
@@ -85,6 +85,6 @@ $crsftag = $token->generate($bid.'ask');
 </form>
 <?php } ?>
 <?php if ($section == 'complete'){ ?>
-<h2><?php echo $formname; ?>：完了</h2>
+<h2><?php echo h($formname); ?>：完了</h2>
 <p>お問い合わせありがとうございました。</p>
 <?php } ?>
